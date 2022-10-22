@@ -1,86 +1,101 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
+import { useEffect, useRef, useState } from 'react'
+import Contact from '../src/components/Contact'
+import Description from '../src/components/Description'
+import Intro from '../src/components/Intro'
+import PageIndicator from '../src/components/PageIndicator'
+import Projects from '../src/components/Projects'
+import Skills from '../src/components/Skills'
+import { Parallax, ParallaxLayer } from '@react-spring/parallax'
+import Transition from '../src/components/animations/Transition'
+
+export enum Screens {
+  Intro,
+  Description,
+  Skills,
+  Projects,
+  Contact
+}
 
 const Home: NextPage = () => {
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [isScrollDown, setIsScrollDown] = useState<boolean>(false);
+  const [canScroll, setCanScroll] = useState<{ up: boolean, down: boolean }>({ up: true, down: true });
+  const [scrollDelayActive, setScrollDelayActive] = useState<boolean>(false);
+  const screenCount = (Object.keys(Screens).length / 2) - 1;
+  const textShadow = theme === 'dark' ? '0px 2px 40px #ffffff20, 0px 2px 5px #ffffff30' : '0px 2px 40px #00000020, 0px 2px 5px #00000030'
+  const scrollDelay = 400
+  let start;
+
+  const pcScrollDelay = () => {
+    //if pc
+    setScrollDelayActive(true)
+    //
+  }
+  const handleTouchStart = (e) => {
+    start = e.changedTouches[0]
+
+  }
+  const handleTouchEnd = (e) => {
+    if (e.type === 'wheel') return
+    let end = e.changedTouches[0];
+    if (!end?.screenY || !start?.screenY) return
+    if (currentIndex > 0 && end.screenY - start.screenY > 0) {
+      setIsScrollDown(false);
+      setCurrentIndex(currentIndex - 1)
+    } else if (currentIndex < screenCount && end.screenY - start.screenY < 0) {
+      setIsScrollDown(true);
+      setCurrentIndex(currentIndex + 1)
+    }
+  }
+
+  const handleScroll = async event => {
+    if (scrollDelayActive) return
+    if (event.deltaY > 0) {
+      if (currentIndex < screenCount && canScroll.down) {
+        setCurrentIndex(currentIndex + 1)
+        setIsScrollDown(true)
+        pcScrollDelay()
+      }
+    } else {
+      if (currentIndex > 0 && canScroll.up) {
+        setCurrentIndex(currentIndex - 1)
+        setIsScrollDown(false)
+        pcScrollDelay()
+      }
+    }
+  };
+  useEffect(() => {
+    setCanScroll({ up: true, down: true })
+    setTimeout(() => {
+      setScrollDelayActive(false)
+    }, scrollDelay)
+  }, [currentIndex])
+
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+    <div className={theme}>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Martin Ochoa</title>
+        {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
 
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
+      <main style={{ textShadow }} className={`w-full bg-white dark:bg-black`} onWheel={handleScroll} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+        {/* <div className='dark:bg-black h-full w-full absolute'/> */}
+        <Transition screenCount={screenCount} currentIndex={currentIndex} isScrollDown={isScrollDown}>
+          <Intro />
+          <Description />
+          <Skills theme={theme} />
+          <Projects setCanScroll={setCanScroll} isScrollDown={isScrollDown} setCurrentIndex={setCurrentIndex} currentIndex={currentIndex} canScroll={canScroll} />
+          <Contact theme={theme} />
+        </Transition>
+        <PageIndicator currentIndex={currentIndex} screenCount={screenCount} />
 
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="rounded-md bg-gray-100 p-3 font-mono text-lg">
-            pages/index.tsx
-          </code>
-        </p>
-
-        <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and its API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
       </main>
-
-      <footer className="flex h-24 w-full items-center justify-center border-t">
-        <a
-          className="flex items-center justify-center gap-2"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </a>
-      </footer>
     </div>
   )
+
 }
 
 export default Home

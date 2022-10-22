@@ -1,3 +1,70 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,
+body {
+    overflow: hidden;
+    background-color: dark;
+}
+/* .dark {
+    background-color: black;
+} */
+
+@layer utilities {
+
+    /* Scroll thumb styles */
+    .scrollbar::-webkit-scrollbar,
+    .scrollbar-dark::-webkit-scrollbar {
+        width: .5rem;
+    }
+
+    .scrollbar-dark::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 1rem;
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb:active,
+    .scrollbar-dark::-webkit-scrollbar-thumb:active {
+        background-color: #999999;
+    }
+
+    .scrollbar-dark::-webkit-scrollbar-thumb:hover {
+        background: #b3b3b3;
+        box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Scroll track styles (Background) */
+    .scrollbar-dark::-webkit-scrollbar-track {
+        background: #3f403e;
+        border-radius: 4px;
+    }
+
+    .scrollbar-dark::-webkit-scrollbar-track:hover,
+    .scrollbar-dark::-webkit-scrollbar-track:active {
+        background: #5f615e
+    }
+
+    /* light */
+
+    .scrollbar::-webkit-scrollbar-thumb {
+        background: #1b1c1b;
+        border-radius: 1rem;
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #373836;
+        box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Scroll track styles (Background) */
+    .scrollbar::-webkit-scrollbar-track {
+        background: #a1a69f;
+        border-radius: 4px;
+    }
+
+    .scrollbar::-webkit-scrollbar-track:hover,
+    .scrollbar::-webkit-scrollbar-track:active {
+        background: #cbd4c7
+    }
+}
