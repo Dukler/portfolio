@@ -1,11 +1,18 @@
 import React, { useState, useCallback, useEffect } from 'react'
-import { useTransition, animated, AnimatedProps, useSpringRef } from '@react-spring/web'
+import { useTransition, animated, useSpringRef } from '@react-spring/web'
 
 import styles from '../../../styles/transition.module.css'
+import { ReactNode } from 'react'
 
-export default ({children, screenCount, currentIndex, isScrollDown}) => {
+type props = {
+  children: Array<ReactNode>,
+  currentIndex:number,
+  isScrollDown:boolean
+}
+
+export default ({children, currentIndex, isScrollDown} : props) => {
   const [index, set] = useState(0)
-  const onClick = useCallback(() => set(state => (state + 1) % screenCount), [])
+  // const onClick = useCallback(() => set(state => (state + 1) % screenCount), [])
   
   useEffect(() => {
     set(currentIndex)
@@ -30,9 +37,8 @@ export default ({children, screenCount, currentIndex, isScrollDown}) => {
     transRef.start()
   }, [index])
   return (
-    
-    <div className={`w-full h-full bg-black ${styles.container}`} >
-      {transitions((style, i) => <div className={`bg-inherit`}><animated.div style={style}>{children[i]}</animated.div></div>)}
+    <div className={`w-full h-full dark:bg-black ${styles.container}`} >
+      {transitions((style, i) => <div className={`bg-inherit`}><animated.div style={style}>{children![i]}</animated.div></div>)}
     </div>
   )
 }

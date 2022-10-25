@@ -1,6 +1,6 @@
 import React from "react"
 
-export default (props)=>{
+export default ()=>{
     return <div className="grid grid-cols-1 min-h-screen justify-center items-center px-8 md:px-40">
         <h1 className="dark:text-white font-roboto text-5xl text-center">About me</h1>
         <p className="dark:text-white font-roboto text-md lg:text-2xl flex self-start">

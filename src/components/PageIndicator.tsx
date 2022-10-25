@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react"
 
-export default ({screenCount, currentIndex}) => {
+type props = {
+    screenCount:number,
+    currentIndex:number
+}
+
+export default ({screenCount, currentIndex}:props) => {
     const [dots, setDots] = useState<React.ReactNode[]>([])
 
     useEffect(() => {

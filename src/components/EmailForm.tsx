@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, TouchEvent} from "react"
 import Typography from "./Typography";
+import { SyntheticEvent } from "react";
 
 type Props = {
     className?: string
@@ -60,20 +61,20 @@ export default ({ className }: Props) => {
             setStatus(response.status)
         })
     }
-    const nameRef = useRef();
+    const nameRef = useRef<HTMLInputElement>(null);
     const [firstFocus, setFirstFocus] = useState(true)
-    const handleFocus = (e) => {
+    const handleFocus = (e:TouchEvent) => {
         if (firstFocus) { 
             setEmailBlur('bg-transparent relative inset-x-0 bottom-0 h-full z-10')
             setEmailClassName("absolute inset-0 bg-inherit h-screen z-50")
-            nameRef.current.focus() 
-            nameRef.current.select()
+            nameRef.current!.focus() 
+            nameRef.current!.select()
             setFirstFocus(false)
         }
         
         // nameRef.current.select()
     }
-    const handleBlur = (e) =>{
+    const handleBlur = (e:SyntheticEvent) =>{
         e.stopPropagation()
         setEmailBlur('')
         setEmailClassName("")

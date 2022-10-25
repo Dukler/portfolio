@@ -1,109 +1,93 @@
+import React, { useLayoutEffect, useState } from 'react';
+import Typography from './Typography';
+import Image from "next/image"
+import githubLight from "../assets/Github-Light.png"
+import boxArrow from "../assets/box-arrow.svg"
 
-const items = [
-    {name:'1', description:'one'}
-]
-export default () =>{
-    return <div className="accordion" id="accordionExample">
-    <div className="accordion-item bg-white border border-gray-200">
-      <h2 className="accordion-header mb-0" id="headingOne">
-        <button className="
-          accordion-button
-          relative
-          flex
-          items-center
-          w-full
-          py-4
-          px-5
-          text-base text-gray-800 text-left
-          bg-white
-          border-0
-          rounded-none
-          transition
-          focus:outline-none
-        " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
-          aria-controls="collapseOne">
-          Accordion Item #1
-        </button>
-      </h2>
-      <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne"
-        data-bs-parent="#accordionExample">
-        <div className="accordion-body py-4 px-5">
-          <strong>This is the first item's accordion body.</strong> It is shown by default,
-          until the collapse plugin adds the appropriate classNamees that we use to style each
-          element. These classNamees control the overall appearance, as well as the showing and
-          hiding via CSS transitions. You can modify any of this with custom CSS or overriding
-          our default variables. It's also worth noting that just about any HTML can go within
-          the <code>.accordion-body</code>, though the transition does limit overflow.
-        </div>
-      </div>
-    </div>
-    <div className="accordion-item bg-white border border-gray-200">
-      <h2 className="accordion-header mb-0" id="headingTwo">
-        <button className="
-          accordion-button
-          collapsed
-          relative
-          flex
-          items-center
-          w-full
-          py-4
-          px-5
-          text-base text-gray-800 text-left
-          bg-white
-          border-0
-          rounded-none
-          transition
-          focus:outline-none
-        " type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
-          aria-controls="collapseTwo">
-          Accordion Item #2
-        </button>
-      </h2>
-      <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo"
-        data-bs-parent="#accordionExample">
-        <div className="accordion-body py-4 px-5">
-          <strong>This is the second item's accordion body.</strong> It is hidden by default,
-          until the collapse plugin adds the appropriate classNamees that we use to style each
-          element. These classNamees control the overall appearance, as well as the showing and
-          hiding via CSS transitions. You can modify any of this with custom CSS or overriding
-          our default variables. It's also worth noting that just about any HTML can go within
-          the <code>.accordion-body</code>, though the transition does limit overflow.
-        </div>
-      </div>
-    </div>
-    <div className="accordion-item bg-white border border-gray-200">
-      <h2 className="accordion-header mb-0" id="headingThree">
-        <button className="
-          accordion-button
-          collapsed
-          relative
-          flex
-          items-center
-          w-full
-          py-4
-          px-5
-          text-base text-gray-800 text-left
-          bg-white
-          border-0
-          rounded-none
-          transition
-          focus:outline-none
-        " type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
-          aria-controls="collapseThree">
-          Accordion Item #3
-        </button>
-      </h2>
-      <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree"
-        data-bs-parent="#accordionExample">
-        <div className="accordion-body py-4 px-5">
-          <strong>This is the third item's accordion body.</strong> It is hidden by default,
-          until the collapse plugin adds the appropriate classNamees that we use to style each
-          element. These classNamees control the overall appearance, as well as the showing and
-          hiding via CSS transitions. You can modify any of this with custom CSS or overriding
-          our default variables. It's also worth noting that just about any HTML can go within
-          the <code>.accordion-body</code>, though the transition does limit overflow.
-        </div>
-      </div>
-    </div>
-  </div>
+type props = {
+  data: Array<{
+    name:string,
+    description:string,
+    live?:string,
+    demo?:string,
+    repositories:Array<{
+      title:string,
+      src:string
+    }>,
+}>
 }
+
+const Accordion = ({ data }: props) => {
+  const [isActive, setIsActive] = useState<Array<boolean>>([]);
+
+  const toggleActive = (index:number) => {
+    let auxActive = [...isActive];
+    auxActive[index] = !auxActive[index];
+    data.forEach((element, i) => {
+      if (index !== i) auxActive[i] = false
+    });
+    setIsActive(auxActive)
+  }
+
+  const onClickHandler = (src:string) => {
+    window.open(
+      src,
+      '_blank'
+    )
+  }
+
+  useLayoutEffect(() => {
+    let auxActive:Array<boolean> = []
+    data.forEach((element, index) => {
+      auxActive[index] = false;
+    });
+    setIsActive(auxActive)
+  }, [])
+
+  return <div className='w-5/6 flex flex-col border-2 divide-y-2 rounded-lg '>
+    {(data.map(({ name, description, ...item }, index) => (
+      <div className='divide-y-2'>
+        <div className='flex flex-row justify-between px-2 h-14 items-center'
+          onClick={() => toggleActive(index)}>
+          <div className={isActive[index]?`text-blue-600 dark:text-yellow-300`:``}>{name}</div>
+          <div className={isActive[index]?`text-blue-600 dark:text-yellow-300`:``}>
+            {/* <StaticImage src="../images/arrowhead.png" layout="fixed" /> */}
+            {isActive[index] ? '⌄' : '⌃'}
+          </div>
+        </div>
+        {<div className={`transition-all ease-in-out duration-1000 ${isActive[index] ? 'max-h-96 opacity-100 delay-1000': 'max-h-0 overflow-hidden opacity-0'}`}>
+          <div className='p-2 '>{description}</div>
+          {/* links */}
+          <div className="flex flex-row items-center gap-2 md:gap-x-10 py-4 flex-wrap justify-center">
+            {item.repositories.map((repo, index) =>
+              <button
+                key={index}
+                type="button"
+                className="h-9 px-1 inline-flex items-center border border-transparent shadow-sm text-sm leading-4 font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+                onClick={() => onClickHandler(repo.src)}
+              >
+                <Typography className="pr-1">{repo?.title || "View on Github"}</Typography>
+                <div className="relative h-4 w-4">
+                  <Image src={githubLight} layout='fill' />
+                </div>
+              </button>
+            )}
+            {item?.live ?
+              <button
+                type="button"
+                className="h-9 px-1 inline-flex items-center  border border-transparent shadow-sm text-sm leading-4 font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"
+                onClick={() => onClickHandler(item.live!)}
+              >
+                <Typography className="pr-2 pt-0.5 text-md">Live</Typography>
+                <div className="relative h-5 w-4">
+                  <Image src={boxArrow} layout='fill' />
+                </div>
+              </button> :
+              null}
+          </div>
+        </div>}
+      </div>)))}
+  </div>
+};
+
+export default Accordion;
