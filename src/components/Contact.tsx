@@ -2,19 +2,19 @@ import React, { useState } from "react"
 import EmailForm from "./EmailForm"
 import Typography from "./Typography"
 import Image from "next/image"
-import javascript from "../assets/javascript.svg"
-import typescript from "../assets/typescript.svg"
-import python from "../assets/python.svg"
-import nodejs from "../assets/nodejs.svg"
-import react from "../assets/react.svg"
-import go from "../assets/go.svg"
-import solidityDark from "../assets/solidity-dark.svg"
-import solidityLight from "../assets/solidity-light.svg"
+// import javascript from "../assets/javascript.svg"
+// import typescript from "../assets/typescript.svg"
+// import python from "../assets/python.svg"
+// import nodejs from "../assets/nodejs.svg"
+// import react from "../assets/react.svg"
+// import go from "../assets/go.svg"
+// import solidityDark from "../assets/solidity-dark.svg"
+// import solidityLight from "../assets/solidity-light.svg"
 
-import githubLight from "../assets/Github-Light.png"
-import githubDark from "../assets/Github.png"
-import linkedin from "../assets/linkedin.svg"
-import discord from "../assets/discord.svg"
+// import githubLight from "../assets/Github-Light.png"
+// import githubDark from "../assets/Github.png"
+// import linkedin from "../assets/linkedin.svg"
+// import discord from "../assets/discord.svg"
 
 
 export default ({ theme }: { theme: 'dark' | 'light' }) => {
@@ -44,19 +44,19 @@ export default ({ theme }: { theme: 'dark' | 'light' }) => {
             </Typography>
             <Typography className="text-md md:text-xl text-left pt-3 flex flex-row flex-wrap gap-x-4">
                 <div className="flex items-center">
-                    <Image src={react} width='28px' height='28px'/>React
+                    <Image src={'/react.svg'} width='28px' height='28px'/>React
                 </div>
                 <div className="flex items-center">
-                    <Image src={theme === 'dark' ? solidityDark : solidityLight} width='28px' height='28px'/>Solidity
+                    <Image src={theme === 'dark' ? '/solidity-dark.svg' : '/solidity-light.svg'} width='28px' height='28px'/>Solidity
                 </div>
                 <div className="flex items-center">
-                    <Image src={nodejs} width='28px' height='28px'/>Node.js
+                    <Image src={'/nodejs.svg'} width='28px' height='28px'/>Node.js
                 </div>
                 <div className="flex items-center">
-                    <Image src={python} width='28px' height='28px'/>Python
+                    <Image src={'/python.svg'} width='28px' height='28px'/>Python
                 </div>
                 <div className="flex items-center">
-                    <Image src={go} width='28px' height='28px'/>Go
+                    <Image src={'/go.svg'} width='28px' height='28px'/>Go
                 </div>
                 {/* <ul className="marker:text-dark dark:marker:text-white list-inside">
                     <li className="flex flex-row items-start gap-x-2 pb-2">
@@ -79,12 +79,12 @@ export default ({ theme }: { theme: 'dark' | 'light' }) => {
             <Typography className="text-3xl">Other places</Typography>
             
             <a href="https://github.com/Dukler/" target='_blank' className="flex flex-row gap-x-2 py-1 w-fit">
-                <Image src={theme === 'dark' ? githubLight : githubDark} width='26px' height='26px'/>
+                <Image src={theme === 'dark' ? '/GitHub-Light.png' : '/GitHub.png'} width='26px' height='26px'/>
                 <Typography className="text-xl">Github</Typography>
             </a>
             
             <a href="https://www.linkedin.com/in/mart%C3%ADn-ochoa-b9b74b84/" target='_blank' className="flex flex-row gap-x-2 py-1 w-fit">
-                <Image src={linkedin} width='26px' height='26px'/>
+                <Image src={'/linkedin.svg'} width='26px' height='26px'/>
                 <Typography className="text-xl">Linkedin</Typography>
             </a>
             

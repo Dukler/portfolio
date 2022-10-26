@@ -1,8 +1,8 @@
 import React, { useLayoutEffect, useState } from 'react';
 import Typography from './Typography';
 import Image from "next/image"
-import githubLight from "../assets/Github-Light.png"
-import boxArrow from "../assets/box-arrow.svg"
+// import githubLight from "../assets/Github-Light.png"
+// import boxArrow from "../assets/box-arrow.svg"
 
 type props = {
   data: Array<{
@@ -55,7 +55,7 @@ const Accordion = ({ data }: props) => {
             {isActive[index] ? '⌄' : '⌃'}
           </div>
         </div>
-        {<div className={`transition-all ease-in-out duration-1000 ${isActive[index] ? 'max-h-96 opacity-100 delay-1000': 'max-h-0 overflow-hidden opacity-0'}`}>
+        {<div className={`transition-all ease-in-out duration-1000 ${isActive[index] ? 'max-h-96 opacity-100': 'max-h-0 overflow-hidden opacity-0'}`}>
           <div className='p-2 '>{description}</div>
           {/* links */}
           <div className="flex flex-row items-center gap-2 md:gap-x-10 py-4 flex-wrap justify-center">
@@ -68,7 +68,7 @@ const Accordion = ({ data }: props) => {
               >
                 <Typography className="pr-1">{repo?.title || "View on Github"}</Typography>
                 <div className="relative h-4 w-4">
-                  <Image src={githubLight} layout='fill' />
+                  <Image src={'/Github-Light.png'} layout='fill' />
                 </div>
               </button>
             )}
@@ -80,7 +80,7 @@ const Accordion = ({ data }: props) => {
               >
                 <Typography className="pr-2 pt-0.5 text-md">Live</Typography>
                 <div className="relative h-5 w-4">
-                  <Image src={boxArrow} layout='fill' />
+                  <Image src={'/box-arrow.svg'} layout='fill' />
                 </div>
               </button> :
               null}

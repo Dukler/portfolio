@@ -1,93 +1,93 @@
 import Image from "next/image"
-import HTML5 from "../assets/HTML5.svg"
-import nextjsLight from "../assets/nextjs-light.svg"
-import nextjsDark from "../assets/nextjs-dark.svg"
-import CSS from "../assets/CSS.svg"
-import javascript from "../assets/javascript.svg"
-import typescript from "../assets/typescript.svg"
-import python from "../assets/python.svg"
-import nodejs from "../assets/nodejs.svg"
-import react from "../assets/react.svg"
-import solidityDark from "../assets/solidity-dark.svg"
-import solidityLight from "../assets/solidity-light.svg"
-import etherjsDark from "../assets/etherjs-dark.svg"
-import etherjsLight from "../assets/etherjs-light.svg"
-import metamask from "../assets/metamask.svg"
-import hardhat from "../assets/hardhat.svg"
-import java from "../assets/java.svg"
-import go from "../assets/go.svg"
-import gatsbyjs from "../assets/gatsbyjs.svg"
-import redux from "../assets/redux.svg"
-import tux from "../assets/Tux.svg"
+// import HTML5 from "../assets/HTML5.svg"
+// import nextjsLight from "../assets/nextjs-light.svg"
+// import nextjsDark from "../assets/nextjs-dark.svg"
+// import CSS from "../assets/CSS.svg"
+// import javascript from "../assets/javascript.svg"
+// import typescript from "../assets/typescript.svg"
+// import python from "../assets/python.svg"
+// import nodejs from "../assets/nodejs.svg"
+// import react from "../assets/react.svg"
+// import solidityDark from "../assets/solidity-dark.svg"
+// import solidityLight from "../assets/solidity-light.svg"
+// import etherjsDark from "../assets/etherjs-dark.svg"
+// import etherjsLight from "../assets/etherjs-light.svg"
+// import metamask from "../assets/metamask.svg"
+// import hardhat from "../assets/hardhat.svg"
+// import java from "../assets/java.svg"
+// import go from "../assets/go.svg"
+// import gatsbyjs from "../assets/gatsbyjs.svg"
+// import redux from "../assets/redux.svg"
+// import tux from "../assets/Tux.svg"
 import React from "react"
 
 const getIcons = (theme: 'dark' | 'light') => [
     {
-        src: HTML5,
+        src: '/HTML5.svg',
         name:'HTML'
     },
     {
-        src: CSS,
+        src: '/CSS.svg',
         name:'CSS'
     },
     {
-        src: javascript,
+        src: '/javascript.svg',
         name:'Javascript'
     },
     {
-        src: typescript,
+        src: '/typescript.svg',
         name:'Typescript'
     },
     {
-        src: react,
+        src: '/react.svg',
         name:'React'
     },
     {
-        src: redux,
+        src: '/redux.svg',
         name:'Redux'
     },
     {
-        src: theme === 'dark' ? nextjsLight : nextjsDark,
+        src: theme === 'dark' ? '/nextjs-light.svg' : '/nextjs-dark.svg',
         name:'Next.js'
     },
     {
-        src: gatsbyjs,
+        src: '/gatsbyjs.svg',
         name:'Gatsby.js'
     },
     {
-        src:  theme === 'dark' ? solidityDark : solidityLight,
+        src:  theme === 'dark' ? '/solidity-dark.svg' : '/solidity-light.svg',
         name:'Solidity'
     },
     {
-        src:  theme === 'dark' ? etherjsDark : etherjsLight,
+        src:  theme === 'dark' ? '/etherjs-dark.svg' : '/etherjs-light.svg',
         name:'Ether.js'
     },
     {
-        src:  metamask,
+        src:  '/metamask.svg',
         name:'Web3.js/py'
     },
     {
-        src:  hardhat,
+        src:  '/hardhat.svg',
         name:'Hardhat'
     },
     {
-        src: nodejs,
+        src: '/nodejs.svg',
         name:'Node.js'
     },
     {
-        src: python,
+        src: '/python.svg',
         name:'Python'
     },
     {
-        src: java,
+        src: '/java.svg',
         name:'Java'
     },
     {
-        src: go,
+        src: '/go.svg',
         name:'Go'
     },
     {
-        src: tux,
+        src: '/tux.svg',
         name:'Linux'
     }
 ]
