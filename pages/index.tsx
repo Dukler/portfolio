@@ -22,7 +22,7 @@ export enum Screens {
 
 const Home: NextPage = () => {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
-  const [currentIndex, setCurrentIndex] = useState<number>(3);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isScrollDown, setIsScrollDown] = useState<boolean>(false);
   const [canScroll, setCanScroll] = useState<{ up: boolean, down: boolean }>({ up: true, down: true });
   const [scrollDelayActive, setScrollDelayActive] = useState<boolean>(false);
