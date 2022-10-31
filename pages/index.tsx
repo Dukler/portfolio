@@ -11,6 +11,7 @@ import Transition from '../src/components/animations/Transition'
 import { TouchEvent } from 'react'
 import { Touch } from 'react'
 
+
 export enum Screens {
   Intro,
   Description,
@@ -21,7 +22,7 @@ export enum Screens {
 
 
 const Home: NextPage = () => {
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [theme, setTheme] = useState<'dark' | 'light'>();
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isScrollDown, setIsScrollDown] = useState<boolean>(false);
   const [canScroll, setCanScroll] = useState<{ up: boolean, down: boolean }>({ up: true, down: true });
@@ -30,6 +31,24 @@ const Home: NextPage = () => {
   const textShadow = theme === 'dark' ? '0px 2px 40px #ffffff20, 0px 2px 5px #ffffff30' : '0px 2px 40px #00000020, 0px 2px 5px #00000030'
   const scrollDelay = 400
   let start:Touch;
+
+  useEffect(()=>{
+    // localStorage.removeItem("theme")
+    const localTheme = localStorage.getItem("theme") as 'light' | 'dark' | null
+    if(localTheme != null){
+      setTheme(localTheme)
+    }else{
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        localStorage.setItem('theme','dark')
+      }else{
+        localStorage.setItem('theme','light')
+      }
+    }
+  },[])
+
+  useEffect(()=>{
+    if (theme) localStorage.setItem('theme',theme)
+  },[theme])
 
   const pcScrollDelay = () => {
     //if pc
@@ -85,15 +104,16 @@ const Home: NextPage = () => {
 
       <main style={{ textShadow }} className={`w-full bg-white dark:bg-black dark:text-white font-roboto`} onWheel={handleScroll} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
         {/* <div className='dark:bg-black h-full w-full absolute'/> */}
+        
         <Transition currentIndex={currentIndex} isScrollDown={isScrollDown}>
-          <Intro />
+          <Intro theme={theme} setTheme={setTheme}/>
           <Description />
           <Skills theme={theme} />
           <Projects />
           <Contact theme={theme} />
         </Transition>
         <PageIndicator currentIndex={currentIndex} screenCount={screenCount} />
-
+        
       </main>
     </div>
   )

@@ -63,8 +63,10 @@ const projects = [
 
 export default () => {
     
-    return <div className="flex flex-col items-center w-full h-screen  ">
+    return <div className="flex flex-col items-center w-full h-screen space-y-5 ">
         <Typography className="text-2xl h-14 leading-[3.5rem] md:h-32 md:leading-[8rem]">Check some of my work out!</Typography>
-        <Accordion data={projects} />
+        <div id='aco' className="flex items-center h-full w-full justify-center">
+            <Accordion data={projects} />
+        </div>
     </div>
 }

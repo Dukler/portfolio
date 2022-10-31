@@ -17,7 +17,7 @@ import Image from "next/image"
 // import discord from "../assets/discord.svg"
 
 
-export default ({ theme }: { theme: 'dark' | 'light' }) => {
+export default ({ theme }: { theme: 'dark' | 'light' | undefined }) => {
     const [tooltip, setTooltip] = useState(false)
     const [emailClassName, setEmailClassName] = useState("")
     const [emailFocus, setEmailFocus] = useState(false)

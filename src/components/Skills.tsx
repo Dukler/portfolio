@@ -1,27 +1,7 @@
 import Image from "next/image"
-// import HTML5 from "../assets/HTML5.svg"
-// import nextjsLight from "../assets/nextjs-light.svg"
-// import nextjsDark from "../assets/nextjs-dark.svg"
-// import CSS from "../assets/CSS.svg"
-// import javascript from "../assets/javascript.svg"
-// import typescript from "../assets/typescript.svg"
-// import python from "../assets/python.svg"
-// import nodejs from "../assets/nodejs.svg"
-// import react from "../assets/react.svg"
-// import solidityDark from "../assets/solidity-dark.svg"
-// import solidityLight from "../assets/solidity-light.svg"
-// import etherjsDark from "../assets/etherjs-dark.svg"
-// import etherjsLight from "../assets/etherjs-light.svg"
-// import metamask from "../assets/metamask.svg"
-// import hardhat from "../assets/hardhat.svg"
-// import java from "../assets/java.svg"
-// import go from "../assets/go.svg"
-// import gatsbyjs from "../assets/gatsbyjs.svg"
-// import redux from "../assets/redux.svg"
-// import tux from "../assets/Tux.svg"
 import React from "react"
 
-const getIcons = (theme: 'dark' | 'light') => [
+const getIcons = (theme: 'dark' | 'light' | undefined) => [
     {
         src: '/HTML5.svg',
         name:'HTML'
@@ -92,7 +72,7 @@ const getIcons = (theme: 'dark' | 'light') => [
     }
 ]
 
-export default ({ theme }: { theme: 'dark' | 'light' }) => {
+export default ({ theme }: { theme: 'dark' | 'light' | undefined }) => {
     return <div className="grid grid-cols-1 min-h-screen justify-center items-center px-8">
         <h1 className="dark:text-white font-roboto text-5xl lg:text-6xl text-center ">Skills</h1>
         <div className="flex justify-center items-center select-none self-start">

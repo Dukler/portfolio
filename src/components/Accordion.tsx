@@ -44,7 +44,7 @@ const Accordion = ({ data }: props) => {
     setIsActive(auxActive)
   }, [])
 
-  return <div className='w-5/6 flex flex-col border-2 divide-y-2 rounded-lg '>
+  return <div className='w-5/6 xl:text-xl border-2 divide-y-2 rounded-lg h-fit'>
     {(data.map(({ name, description, ...item }, index) => (
       <div className='divide-y-2'>
         <div className='flex flex-row justify-between px-2 h-14 items-center'
@@ -55,7 +55,7 @@ const Accordion = ({ data }: props) => {
             {isActive[index] ? '⌄' : '⌃'}
           </div>
         </div>
-        {<div className={`transition-all ease-in-out duration-1000 ${isActive[index] ? 'max-h-96 opacity-100': 'max-h-0 overflow-hidden opacity-0'}`}>
+        {<div className={`transition-all ease-in duration-300 ${isActive[index] ? 'max-h-96 opacity-100': 'max-h-0 overflow-hidden opacity-0'}`}>
           <div className='p-2 '>{description}</div>
           {/* links */}
           <div className="flex flex-row items-center gap-2 md:gap-x-10 py-4 flex-wrap justify-center">
