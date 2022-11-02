@@ -27,7 +27,8 @@ const projects = [
     {
         name: 'Duklerplace',
         live: 'https://duklerplace.vercel.app/',
-        description: 'This is a NFT marketplace for the ethereum network built with React + Next.js and deployed in the Goerli Testnet.',
+        description: 'This is a NFT marketplace for the ethereum network built with React + Next.js and deployed in the Goerli Testnet.' + 
+        ' It supports any Standard ERC721 nft collection and also minting new NFTs, uploading images and metadata to IPFS, I created nft cards collection to test it.',
         repositories: [
             { title: 'Front-end', src: 'https://github.com/Dukler/duklerplace-frontend' },
             { title: 'Contracts', src: 'https://github.com/Dukler/duklerplace-contracts' }
