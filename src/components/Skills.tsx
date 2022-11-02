@@ -67,7 +67,7 @@ const getIcons = (theme: 'dark' | 'light' | undefined) => [
         name:'Go'
     },
     {
-        src: '/tux.svg',
+        src: '/Tux.svg',
         name:'Linux'
     }
 ]
