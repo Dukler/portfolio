@@ -2,19 +2,6 @@ import React, { useState } from "react"
 import EmailForm from "./EmailForm"
 import Typography from "./Typography"
 import Image from "next/image"
-// import javascript from "../assets/javascript.svg"
-// import typescript from "../assets/typescript.svg"
-// import python from "../assets/python.svg"
-// import nodejs from "../assets/nodejs.svg"
-// import react from "../assets/react.svg"
-// import go from "../assets/go.svg"
-// import solidityDark from "../assets/solidity-dark.svg"
-// import solidityLight from "../assets/solidity-light.svg"
-
-// import githubLight from "../assets/Github-Light.png"
-// import githubDark from "../assets/Github.png"
-// import linkedin from "../assets/linkedin.svg"
-// import discord from "../assets/discord.svg"
 
 
 export default ({ theme }: { theme: 'dark' | 'light' | undefined }) => {
@@ -79,7 +66,7 @@ export default ({ theme }: { theme: 'dark' | 'light' | undefined }) => {
             <Typography className="text-3xl">Other places</Typography>
             
             <a href="https://github.com/Dukler/" target='_blank' className="flex flex-row gap-x-2 py-1 w-fit">
-                <Image src={theme === 'dark' ? '/github-light.png' : '/github.png'} width='26px' height='26px'/>
+                <Image src={theme === 'dark' ? '/GitHub-Light.png' : '/GitHub.png'} width='26px' height='26px'/>
                 <Typography className="text-xl">Github</Typography>
             </a>
             

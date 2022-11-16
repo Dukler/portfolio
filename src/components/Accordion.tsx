@@ -1,8 +1,6 @@
 import React, { useLayoutEffect, useState } from 'react';
 import Typography from './Typography';
 import Image from "next/image"
-// import githubLight from "../assets/Github-Light.png"
-// import boxArrow from "../assets/box-arrow.svg"
 
 type props = {
   data: Array<{
@@ -68,7 +66,7 @@ const Accordion = ({ data }: props) => {
               >
                 <Typography className="pr-1">{repo?.title || "View on Github"}</Typography>
                 <div className="relative h-4 w-4">
-                  <Image src={'/github-light.png'} layout='fill' />
+                  <Image src={'/GitHub-Light.png'} layout='fill' />
                 </div>
               </button>
             )}
