@@ -79,7 +79,7 @@ export default ({ theme }: { theme: 'dark' | 'light' | undefined }) => {
             <Typography className="text-3xl">Other places</Typography>
             
             <a href="https://github.com/Dukler/" target='_blank' className="flex flex-row gap-x-2 py-1 w-fit">
-                <Image src={theme === 'dark' ? '/GitHub-Light.png' : '/GitHub.png'} width='26px' height='26px'/>
+                <Image src={theme === 'dark' ? '/github-light.png' : '/github.png'} width='26px' height='26px'/>
                 <Typography className="text-xl">Github</Typography>
             </a>
             

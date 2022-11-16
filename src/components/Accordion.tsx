@@ -68,7 +68,7 @@ const Accordion = ({ data }: props) => {
               >
                 <Typography className="pr-1">{repo?.title || "View on Github"}</Typography>
                 <div className="relative h-4 w-4">
-                  <Image src={'/Github-Light.png'} layout='fill' />
+                  <Image src={'/github-light.png'} layout='fill' />
                 </div>
               </button>
             )}
