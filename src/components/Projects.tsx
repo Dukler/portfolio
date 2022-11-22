@@ -52,6 +52,11 @@ const projects = [
         repositories: [{ title: '', src: 'https://github.com/Dukler/DuklerSea-bot' }]
     },
     {
+        name: 'Python trading bot',
+        description: 'This is a test project, python trading bot EVM compatible, tested on BSC using the pancakeswap router. It uses selenium to get the contract ABIS from the network block explorer.',
+        repositories: [{ title: '', src: 'https://github.com/Dukler/trading-bot' }]
+    },
+    {
         name: 'This portfolio',
         description: 'This is my webpage developed in React Next.js and TailwindCSS',
         repositories: [{ title: '', src: 'https://github.com/Dukler/portfolio' }]
