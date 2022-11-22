@@ -80,7 +80,7 @@ export default ({ theme }: { theme: 'dark' | 'light' | undefined }) => {
                 {getIcons(theme).map(item =>
                     <div key={item.name} className="flex flex-col items-center ">
                         <div className="w-12 h-12 md:w-20 md:h-20 lg:w-28 lg:h-28 relative">
-                            <Image src={item.src} layout="fill"/>
+                            <Image src={item.src} layout="fill" priority={true} quality={50}/>
                         </div>
                         <p className="dark:text-white font-roboto text-md lg:text-xl text-center pt-0.5">{item.name}</p>
                     </div>

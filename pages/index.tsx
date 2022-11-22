@@ -33,7 +33,6 @@ const Home: NextPage = () => {
   let start:Touch;
 
   useEffect(()=>{
-    // localStorage.removeItem("theme")
     const localTheme = localStorage.getItem("theme") as 'light' | 'dark' | null
     if(localTheme != null){
       setTheme(localTheme)
