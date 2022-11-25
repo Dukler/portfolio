@@ -29,7 +29,7 @@ export default ({ theme }: { theme: 'dark' | 'light' | undefined }) => {
                 So if you want to talk to me, go to the contact section below! <br />
                 My main focus right now is on full stack systems, with the main technologies being:
             </Typography>
-            <Typography className="text-md md:text-xl text-left pt-3 flex flex-row flex-wrap gap-x-4">
+            <Typography className="text-md md:text-xl text-left pt-3 flex flex-row flex-wrap gap-x-4 gap-y-2">
                 <div className="flex items-center">
                     <Image src={'/javascript.svg'} width='28px' height='28px'/>Javascript/Typescript
                 </div>
@@ -47,6 +47,9 @@ export default ({ theme }: { theme: 'dark' | 'light' | undefined }) => {
                 </div>
                 <div className="flex items-center">
                     <Image src={'/go.svg'} width='28px' height='28px'/>Go
+                </div>
+                <div className="flex items-center">
+                    <Image src={'/java.svg'} width='28px' height='28px'/>Java
                 </div>
             </Typography>
         </div>
