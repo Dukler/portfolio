@@ -31,6 +31,9 @@ export default ({ theme }: { theme: 'dark' | 'light' | undefined }) => {
             </Typography>
             <Typography className="text-md md:text-xl text-left pt-3 flex flex-row flex-wrap gap-x-4">
                 <div className="flex items-center">
+                    <Image src={'/javascript.svg'} width='28px' height='28px'/>Javascript/Typescript
+                </div>
+                <div className="flex items-center">
                     <Image src={'/react.svg'} width='28px' height='28px'/>React
                 </div>
                 <div className="flex items-center">
@@ -45,18 +48,6 @@ export default ({ theme }: { theme: 'dark' | 'light' | undefined }) => {
                 <div className="flex items-center">
                     <Image src={'/go.svg'} width='28px' height='28px'/>Go
                 </div>
-                {/* <ul className="marker:text-dark dark:marker:text-white list-inside">
-                    <li className="flex flex-row items-start gap-x-2 pb-2">
-                        <Image src={javascript} width='28px' height='28px'/>
-                        <Image src={typescript} width='28px' height='28px'/>
-                        Javascript/Typescript
-                    </li>
-                    <li className="flex flex-row items-start gap-x-2 pb-2"><Image src={react} width='28px' height='28px'/>React</li>
-                    <li className="flex flex-row items-start gap-x-2 pb-2"><Image src={theme === 'dark' ? solidityDark : solidityLight} width='28px' height='28px'/>Solidity</li>
-                    <li className="flex flex-row items-start gap-x-2 pb-2"><Image src={nodejs} width='28px' height='28px'/>Node.js</li>
-                    <li className="flex flex-row items-start gap-x-2 pb-2"><Image src={python} width='28px' height='28px'/>Python</li>
-                    <li className="flex flex-row items-start gap-x-2 pb-2"><Image src={go} width='28px' height='28px'/>Go</li>
-                </ul> */}
             </Typography>
         </div>
         <Typography className="text-center text-4xl col-span-2">Contact me</Typography>
